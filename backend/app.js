@@ -1,10 +1,12 @@
 const express = require('express');
+const path = require('node:path');
 const { randomUUID } = require('node:crypto');
 
 const app = express();
 const tasks = [];
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 app.get('/tasks', (req, res) => {
 	res.json(tasks);
